@@ -9,13 +9,13 @@ function mergeMeetings(arrOfMeetings) {
     const mergedMeetings = [arrOfMeetings[0]];
 
     for (let i = 1; i < len; i++) {
-        const lastMergedMeeting  = mergedMeetings = [mergedMeetings.length - 1];
+        const lastMergedMeeting  = mergedMeetings[mergedMeetings.length - 1];
         const currMeeting = arrOfMeetings[i];
 
         if (lastMergedMeeting.endTime >= currMeeting.startTime) {
-            lastMergedMeeting.endTime = Math.max(astMergedMeeting.endTime, currMeeting.endTime);
+            lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, currMeeting.endTime);
         } else {
-            arrOfMeetings.push(currMeeting);
+            mergedMeetings.push(currMeeting);
         }
     }
     return mergedMeetings;

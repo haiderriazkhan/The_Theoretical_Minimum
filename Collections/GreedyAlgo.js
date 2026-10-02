@@ -3,7 +3,7 @@
 function getMaxProfit(stockPrices) {
     let lowestStockPrice = stockPrices[0];
     let maxProfit = Number.MIN_SAFE_INTEGER;
-    stockPrices.slice(1).forEach(function(stockPrice) {
+    stockPrices.slice(1).forEach(stockPrice => {
         const profit = stockPrice - lowestStockPrice;
         maxProfit = Math.max(profit, maxProfit);
         lowestStockPrice = Math.min(stockPrice, lowestStockPrice);
@@ -13,19 +13,17 @@ function getMaxProfit(stockPrices) {
 
 function getProductsOfAllIntsExceptAtIndex(arr) {
     let leftCumProduct = 1;
-    const productsOfAllIntsExceptAtIndex = arr.map(function(x) {
-        const LeftProductExceptAtIndex = leftCumProduct;
-        leftCumProduct *= x;
-        return LeftProductExceptAtIndex;
-    });
+    const productsOfAllIntsExceptAtIndex = new Array(arr.length);
+    for (let i = 0; i < arr.length; i++) {
+        productsOfAllIntsExceptAtIndex[i] = leftCumProduct;
+        leftCumProduct *= arr[i];
+    }
 
     let rightCumProduct = 1;
-    let j = arr.length - 1;
-    arr.reverse().forEach(function(x) {
+    for (let j = arr.length -1; j>=0; j--) {
         productsOfAllIntsExceptAtIndex[j] *= rightCumProduct;
-        j = j -1;
-        rightCumProduct *= x;
-    });
+        rightCumProduct *= arr[j];
+    }
     return productsOfAllIntsExceptAtIndex;
 }
 
